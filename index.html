@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <title>Slothlist — let the pile wait</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Slothlist home"><span class="brand-mark">s</span><span>slothlist</span></a>
+      <div class="privacy"><span class="pulse"></span><span id="connection-label">Checking Backboard setup…</span></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow"><span>YOUR PERSONAL PACE-SETTER</span><span class="eyebrow-line"></span><span>01 / 01</span></div>
+        <h1>Let the pile<br>wait <em>a little.</em></h1>
+        <p class="lede">Drop the swirl of stuff on your mind. Backboard and an open-weight model will find one gentle place to begin.</p>
+        <div class="sloth-art" aria-hidden="true">
+          <svg viewBox="0 0 170 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M68 26c-18-9-31 4-28 18 2 9 10 13 18 12m46-30c18-9 31 4 28 18-2 9-10 13-18 12" stroke="#4f6248" stroke-width="10" stroke-linecap="round"/>
+            <path d="M44 75c0-27 18-47 41-47s41 20 41 47v44c0 26-18 43-41 43s-41-17-41-43V75Z" fill="#b7a77e"/>
+            <path d="M49 74c0-22 15-39 36-39 20 0 35 17 35 39v19c0 22-15 37-35 37-21 0-36-15-36-37V74Z" fill="#dfd0ac"/>
+            <path d="M55 82c2-14 12-21 23-18 8 2 12 10 11 18-2 10-9 17-19 16-10-1-16-7-15-16Zm38 0c-2-14 8-21 19-18 8 2 12 10 11 18-2 10-9 17-19 16-10-1-16-7-15-16Z" fill="#f1e8d7"/>
+            <circle cx="72" cy="83" r="3" fill="#334137"/><circle cx="104" cy="83" r="3" fill="#334137"/>
+            <path d="M80 100c3-4 9-4 12 0-1 6-3 9-6 9s-5-3-6-9Z" fill="#334137"/>
+            <path d="M54 139c-7 16-7 26 1 31 7 4 16-1 19-9m40-22c7 16 7 26-1 31-7 4-16-1-19-9" stroke="#53664b" stroke-width="9" stroke-linecap="round"/>
+            <path d="M40 126c-10-4-17-1-17 6 0 6 8 9 17 7m90-13c10-4 17-1 17 6 0 6-8 9-17 7" stroke="#788566" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <span class="zzz z1">z</span><span class="zzz z2">z</span><span class="zzz z3">z</span>
+        </div>
+      </section>
+
+      <div class="cloud-notice"><span class="cloud-icon">☁</span><span><strong>Backboard cloud mode.</strong> Your task text is sent to Backboard to make a plan, and each plan is kept in a hosted thread. Your API key stays on this computer.</span></div>
+
+      <section class="workspace" aria-label="Make a gentle plan">
+        <div class="card input-card">
+          <div class="card-heading"><span class="step">01</span><div><h2>Empty your head</h2><p>Messy is welcome. Leave out anything too private.</p></div><span class="tiny-icon">↘</span></div>
+          <label class="sr-only" for="tasks">Your task dump</label>
+          <textarea id="tasks" maxlength="6000" placeholder="Email the dentist, laundry is piling up, book train tickets before Friday…"></textarea>
+          <div class="field-footer"><span id="char-count">0 / 6000</span><span>key stays server-side <span class="lock">⌑</span></span></div>
+          <div class="settings">
+            <div class="setting-block"><label for="energy">Energy today <span id="energy-value">3 / 5</span></label><input id="energy" type="range" min="1" max="5" value="3"></div>
+            <div class="setting-block"><label for="minutes">Time budget</label><select id="minutes"><option value="15">15 minutes</option><option value="30" selected>30 minutes</option><option value="60">1 hour</option><option value="90">A slow afternoon</option></select></div>
+          </div>
+          <label class="memory-option"><input id="remember-preferences" type="checkbox"><span><strong>Remember planning preferences</strong><small>Optional Backboard memory across plans. Off by default.</small></span></label>
+          <button class="plan-button" id="plan-button"><span class="button-icon">✳</span><span>Make me a gentle plan</span><span class="button-arrow">↗</span></button>
+          <p class="model-hint" id="model-hint">Uses Backboard with an open-weight Qwen model via OpenRouter</p>
+        </div>
+
+        <div class="result-wrap" id="result-wrap">
+          <div class="empty-state" id="empty-state"><span class="empty-sun">☼</span><p>Your next small step<br>will find its way here.</p><span class="empty-rule"></span><small>No streaks. No guilt. Just one thing.</small></div>
+          <div class="result-card hidden" id="result-card" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>Slow is a valid speed.</span><span>LOCAL AI, GENTLE INTENTIONS <span class="footer-flower">✳</span></span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
