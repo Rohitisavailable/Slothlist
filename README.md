@@ -9,10 +9,10 @@ The default model route is OpenRouter's Qwen2.5 7B Instruct, an open-weight mode
 ## Run it with Backboard
 
 1. Create an API key in the Backboard dashboard's **Settings → API Keys** section at [app.backboard.io](https://app.backboard.io). See [Backboard authentication docs](https://docs.backboard.io/authentication).
-2. In PowerShell, set the key in the current terminal session: `$env:BACKBOARD_API_KEY="paste-your-key-here"`.
+2. Open the `.env` file in this folder and paste the key after `BACKBOARD_API_KEY=`.
 3. From this folder, run `python server.py` and open `http://127.0.0.1:8765`.
 
-Python 3.9+ is required. No Python packages or frontend build step are needed. Do not put the API key in `app.js`, HTML, a committed file, or a chat message. The key is kept in the server process environment; restart the server after changing it.
+Python 3.9+ is required. No Python packages or frontend build step are needed. The local `.env` file is excluded from Git. Do not put the API key in `app.js`, HTML, a committed file, or a chat message. The key is read by the local server; restart the server after changing it.
 
 ## Model settings
 

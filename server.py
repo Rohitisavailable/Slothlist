@@ -9,6 +9,27 @@ import urllib.error
 import urllib.request
 
 ROOT = Path(__file__).parent
+
+
+def load_dotenv(path):
+    """Load simple KEY=VALUE entries without overriding existing environment values."""
+    if not path.is_file():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        name, value = line.split("=", 1)
+        name = name.strip()
+        value = value.strip()
+        if value.startswith(("'", '"')) and value.endswith(value[0]) and len(value) >= 2:
+            value = value[1:-1]
+        if name and name not in os.environ:
+            os.environ[name] = value
+
+
+load_dotenv(ROOT / ".env")
+
 HOST = "127.0.0.1"
 PORT = 8765
 PORT = int(os.environ.get("SLOTHLIST_PORT", PORT))
